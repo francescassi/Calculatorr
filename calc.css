@@ -87,9 +87,8 @@ body{
     50%  { background: linear-gradient(to right, black, green 67%, black); }
     75%  { background: linear-gradient(to right, black, blue 67%, black); }
     100% { background: linear-gradient(to right, black, violet 67%, black); }
-    
 }
 
 .change_bg {
-    animation: flash_start 3s forwards, itzrainingtacos 1s infinite 3s;
+    animation: itzrainingtacos 6s ease-in-out infinite;
 }
