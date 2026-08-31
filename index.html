@@ -14,12 +14,12 @@
             <button onclick="clearDisplay()" class="operator">AC</button>
             <button onclick="deleteLast()" class="operator">DEL</button>
             <button onclick="appendGiven('%')" class="operator">%</button>
-            <button onclick="appendGiven('/')" class="operator">:</button>
+            <button onclick="appendGiven('/')" class="operator">/</button>
 
             <button onclick="appendGiven(7)">7</button>
             <button onclick="appendGiven(8)">8</button>
             <button onclick="appendGiven(9)">9</button>
-            <button onclick="appendGiven('*')" class="operator">x</button>
+            <button onclick="appendGiven('*')" class="operator">*</button>
 
             <button onclick="appendGiven(4)">4</button>
             <button onclick="appendGiven(5)">5</button>
@@ -58,7 +58,7 @@
             try {
                 let math_problem = document.getElementById("display_screen").value;
 
-                if (math_problem==="67x67"){
+                if (math_problem==="67*67"){
                     clearDisplay();
                     playSongWithLyrics();
                 }
