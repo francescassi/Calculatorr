@@ -1,113 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator ni Vine</title>
-    <link rel="stylesheet" href="calc.css">
-</head>
-<body>
-    <div id="calc_box">
-        <input type="text" id="display_screen" readonly>
+body{
+    margin: 0;
+    background-color: #141414;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
 
-        <div class="buttons">
-            <button onclick="clearDisplay()" class="operator">AC</button>
-            <button onclick="deleteLast()" class="operator">DEL</button>
-            <button onclick="appendGiven('%')" class="operator">%</button>
-            <button onclick="appendGiven('/')" class="operator">/</button>
+#calc_box {
+    width: 350px;
+    background-color: rgb(28, 27, 27);
+    padding: 25px;
+    border-radius: 15px;
+}
 
-            <button onclick="appendGiven(7)">7</button>
-            <button onclick="appendGiven(8)">8</button>
-            <button onclick="appendGiven(9)">9</button>
-            <button onclick="appendGiven('*')" class="operator">*</button>
+#display_screen{
+    width: 100%;
+    height: 15vh;
+    background-color: rgb(50, 49, 49);
+    color: white;
+    box-sizing: border-box;
+    font-size: 23px;
+    font-weight: bolder;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    margin-bottom: 25px;
+}
 
-            <button onclick="appendGiven(4)">4</button>
-            <button onclick="appendGiven(5)">5</button>
-            <button onclick="appendGiven(6)">6</button>
-            <button onclick="appendGiven('-')" class="operator">-</button>
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px
+}
 
-            <button onclick="appendGiven(1)">1</button>
-            <button onclick="appendGiven(2)">2</button>
-            <button onclick="appendGiven(3)">3</button>
-            <button onclick="appendGiven('+')" class="operator">+</button>
+.buttons button:hover{
+    background:rgb(82, 81, 81);
+}
 
-            <button onclick="appendGiven(0)">0</button>
-            <button onclick="appendGiven('.')">.</button>
-            <button onclick="calculate()" id="equals" class="operator">=</button>
-        </div>
-    </div>
+.buttons button:not(.operator):hover{
+    background:rgb(82, 81, 81);
+}
 
-    <audio src="onbendedknee.mp3" type="audio/mp3" id="onbendedknee"></audio>
-</body>
+.buttons button:not(.operator){
+    height: 60px;
+    background-color: rgb(50, 49, 49);
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+}
 
-    <script>
-        function appendGiven(Given) {
-            document.getElementById("display_screen").value += Given;
-        }
+#equals{
+    grid-column: span 2;
+    color: white;
+    background-color: orange;
+}
 
-        function clearDisplay() {
-            document.getElementById("display_screen").value = "";
-        }
+#equals:hover{
+    background-color: rgb(255, 188, 63);
+}
+.operator{
+    height: 60px;
+    background-color: rgb(50, 49, 49);
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: orange
+}
 
-        function deleteLast(){
-            let current_display = document.getElementById("display_screen");
-            current_display.value = current_display.value.slice(0, -1);
-        }
+@keyframes flash_start {
+    20%{ background-color: white; } 
+    40%{ background-color: lightgray;}
+    60%{ background-color: gray;}
+    80%{ background-color: darkgray;}
+    100%{ background-color: black; }   
+}
 
-        function calculate() {
-            try {
-                let math_problem = document.getElementById("display_screen").value;
 
-                if (math_problem==="67*67"){
-                    clearDisplay();
-                    playSongWithLyrics();
-                }
-                else{
-                let result = eval(math_problem);
-                document.getElementById("display_screen").value = result;}
+@keyframes itzrainingtacos {
+    0%   { background: linear-gradient(to right, black, red 67%, black); }
+    25%  { background: linear-gradient(to right, black, orange 67%, black); }
+    50%  { background: linear-gradient(to right, black, green 67%, black); }
+    75%  { background: linear-gradient(to right, black, blue 67%, black); }
+    100% { background: linear-gradient(to right, black, violet 67%, black); }
+    
+}
 
-            } 
-            catch (error) {
-                document.getElementById("display_screen").value = "Error";
-            }
-        }
-
-        function playSongWithLyrics() {
-            const song = document.getElementById("onbendedknee");
-            const display = document.getElementById("display_screen");
-            display.style.textAlign = "center";
-            display.style.fontStyle = "italic";
-            display.style.fontWeight = "bolder";
-            display.classList.add("change_bg");
-            const lyrics = [
-                { text: "I'm gonna swallow my pride", time: 3500 },
-                { text: "say I'm sorry", time: 6000 },
-                { text: "Stop pointing fingers", time: 8000 },
-                { text: "the blame is on me", time: 10000 },
-                { text: "I want a new life", time: 12000 },
-                { text: "and I want it with you", time: 14000 },
-                { text: "If you feel the same", time: 16000 },
-                { text: "don't ever let it go", time: 18500 },
-                { text: "You gotta believe", time: 21000 },
-                { text: "in the spirit of love", time: 22500 },
-                { text: "It'll heal all things", time: 24500 },
-                { text: "it won't hurt anymore", time: 26500 },
-                { text: "No, I don't believe", time: 29000 },
-                { text: "our love's terminal", time: 30500 },
-                { text: "I'm down on my knees", time: 32500 },
-                { text: "begging you please", time: 34500 },
-                { text: "come home", time: 36500 },
-                { text: "", time: 41000 },
-            ];
-
-            song.play();
-
-            lyrics.forEach(line => {
-                display.classList.add("fadeInOut");
-                setTimeout(() => {
-                    display.value = line.text;
-                }, line.time);
-            });
-        }
-    </script>
-</html>
+.change_bg {
+    animation: flash_start 3s forwards, itzrainingtacos 1s infinite 3s;
+}
