@@ -79,16 +79,3 @@ body{
     80%{ background-color: darkgray;}
     100%{ background-color: black; }   
 }
-
-
-@keyframes itzrainingtacos {
-    0%   { background: linear-gradient(to right, black, red 67%, black); }
-    25%  { background: linear-gradient(to right, black, orange 67%, black); }
-    50%  { background: linear-gradient(to right, black, green 67%, black); }
-    75%  { background: linear-gradient(to right, black, blue 67%, black); }
-    100% { background: linear-gradient(to right, black, violet 67%, black); }
-}
-
-.change_bg {
-    animation: itzrainingtacos 6s ease-in-out infinite;
-}
